@@ -94,9 +94,9 @@ void editUser(std::string filename) {
 
         outFile.close();
 
-        std::cout << "Данные пользователя успешно изменены." << std::endl;
+        std::cout << "User data changed succesfully." << std::endl;
     } else {
-        std::cout << "Пользователь с указанным именем не найден." << std::endl;
+        std::cout << "The user with the specified name was not found." << std::endl;
     }
 }
 
@@ -155,7 +155,7 @@ void listUsersFromFile(const std::string& filename) {
 
     std::string line;
     std::cout << std::left << std::setw(15) << "Username" << "| " << std::setw(10) << "Password" << "| " << std::setw(8) << "Role" << "|" << std::endl;
-    std::cout << std::string(37, '-') << std::endl;
+    std::cout << std::string(38, '-') << std::endl;
 
     while (std::getline(file, line)) {
         std::string make, model;
@@ -191,6 +191,28 @@ void addUser(std::vector<User>& users) {
     addUserToFile(username, password, role);
     users.push_back({username, password, role});
     std::cout << "New user successfully added!" << std::endl;
+}
+
+void UserMenu(std::string carsFilename) {
+    std::cout << "Choose an option:" << std::endl;
+    std::cout << "1. Edit user" << std::endl;
+    std::cout << "2. Delete user" << std::endl;
+    int choice_menu;
+    std::cin >> choice_menu;
+
+    switch (choice_menu) {
+        case 1: {
+            editUser(carsFilename);
+            break;
+        }
+        case 2: {
+            deleteUser(carsFilename);
+            break;
+        }
+        default:
+            std::cout << "Exited." << std::endl;
+            exit(0);
+    }
 }
 
 #endif // USERS_H

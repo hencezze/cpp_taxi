@@ -26,6 +26,4 @@ int main() {
     else {
         std::cout << "Access denied." << std::endl;
     }
-
-    MainRoleMenu(userRole, carsFilename, usersFilename, users);
 }
